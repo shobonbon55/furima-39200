@@ -13,8 +13,8 @@
 |birthday           |date      |null: false,                     | *誕生年月日
 
 ### association
-has_many :items
-
+has_many :item
+has_many :order
 
 
 ## items テーブル##
@@ -55,15 +55,15 @@ has_one    :address
 ## addresses テーブル##
 |Column             |type      |Option                           |
 |-------------------|----------|---------------------------------|
-|post_num           |integer   |null: false,                     | **郵便番号
+|post_num           |string    |null: false,                     | **郵便番号
 |preference_id      |integer   |null: false,                     | **都道府県
 |city               |string    |null: false,                     | **市区町村
-|house_num          |integer   |null: false,                     | **番地
-|house_name         |string    |null: false,                     | **建物名
-|phone_num          |integer   |null: false,                     | **電話番号
+|house_num          |string    |null: false,                     | **番地
+|house_name         |string    |null: true,                      | **建物名
+|phone_num          |string    |null: false,                     | **電話番号
 |order              |references|null: false, foreign_key: true   |  
 
 
 ### association
-belongs    :order
+belongs_to  :order
 
