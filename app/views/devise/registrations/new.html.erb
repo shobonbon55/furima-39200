@@ -11,9 +11,9 @@
   </div>
 
   <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>    
-  <%= flash[:notice] %> 
-  <% render 'shared/error_messages', model: f.object %> 
-  <%= flash[:alert] %>
+ 
+  <%= render 'shared/error_messages', model: f.object %> 
+
   <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
   <div class="form-group">
