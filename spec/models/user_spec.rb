@@ -6,7 +6,14 @@ RSpec.describe User, type: :model do
     @user = FactoryBot.build(:user)
   end
 
-  describe "ユーザー新規登録" do
+  describe 'ユーザー新規登録' do
+    context '新規登録できるとき' do
+      it 'nicknameとemail、passwordとpassword_confirmatio,family,fristnameが存在すれば登録できる' do
+        @user = FactoryBot.build(:user)
+        expect(@user).to be_valid
+      end
+    end
+  context '新規登録できないとき' do
     it "nicknameが空だと登録できない" do
       @user.nickname = ''
       @user.valid?
@@ -22,6 +29,7 @@ RSpec.describe User, type: :model do
       another_user = FactoryBot.build(:user)
       another_user.email = @user.email
       another_user.valid?
+      # binding.pry
       expect(another_user.errors.full_messages).to include('Email has already been taken')
     end
     it "emailに@を含まないと登録できない" do
@@ -83,6 +91,5 @@ RSpec.describe User, type: :model do
     end
   end
 end
-
-
+end
 
