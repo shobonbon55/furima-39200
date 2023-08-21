@@ -7,4 +7,10 @@ class Item < ApplicationRecord
   validates :description, presence:true
   validates :price,       presence:true, numericality: { in: 300..99999 }
 
+  validates :content, presence: true, unless: :was_attached?
+
+  def was_attached?
+    self.image.attached?
+  end
+
 end

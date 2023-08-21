@@ -19,10 +19,6 @@
     private
   
     def article_params
-      params.require(:article).permit(:title,:text,:category_id )
-      params.require(:article).permit(:title,:text,:condition_id  )
-      params.require(:article).permit(:title,:text,:courier_fare_id  )
-      params.require(:article).permit(:title,:text,:send_area_id  )
-      params.require(:article).permit(:title,:text,:send_period_id  )
+      params.require(:article).permit(:title,:text,:category_id,:condition_id,:courier_fare_id,:send_area_id,:send_period_id )
     end
   end  
