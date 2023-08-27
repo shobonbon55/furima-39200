@@ -131,7 +131,7 @@
     <ul class='item-lists'>
 
       <% @items.each do |item| %>
-        <%= link_to "item_path" do %>
+        <%= link_to "#" do %>
     <div class="item-info">
       <%= image_tag item.image, class: "item-img" if item.image.attached? %><br>
       <div class='item-info'>
