@@ -130,17 +130,38 @@
     </div>
     <ul class='item-lists'>
 
-      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-      <li class='list'>
-        <%= link_to "#" do %>
-        <div class='item-img-content'>
-          <%= image_tag "item-sample.png", class: "item-img"  %>
-
-          <%# 商品が売れていればsold outを表示しましょう %>
+      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう 修正した箇所をわかりやすくするため残しています%>
+      <% @items.each do |item| %>
+        <%= link_to "item_path" do %>
+    <div class="item-info">
+      <%= image_tag item.image, class: "item-img" if item.image.attached? %><br>
+      <div class='item-info'>
+      <span class="item-name"> </span>
+      <p><%= item.item_name %></p>
+      <span class="item-price">
+        <%= item.price %>円<br>
+        <%= item.courier_fare.name %>
+      </span>
+       </div>
+       </div>
+      <% end %>
+       <%# 商品が売れていればsold outを表示しましょう %>
+     <% if @item.nil? %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
-          <%# //商品が売れていればsold outを表示しましょう %>
+           <% end %>
+         <% end %>
+      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう 修正した箇所をわかりやすくするため残しています%>
+
+      <li class='list'>
+        <%= link_to "item_path" do %>
+        <div class='item-img-content'>
+          <%= image_tag "item-sample.png", class: "item-img"  %>
+
+          <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
 
         </div>
         <div class='item-info'>
@@ -157,12 +178,12 @@
         </div>
         <% end %>
       </li>
-      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+       <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
 
       <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-      <%# 商品がある場合は表示されないようにしましょう %>
-      <li class='list'>
-        <%= link_to '#' do %>
+           <% if @items[0] == nil %>
+         <li class='list'>
+        <%= link_to "#" do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
         <div class='item-info'>
           <h3 class='item-name'>
@@ -177,9 +198,15 @@
           </div>
         </div>
         <% end %>
-      </li>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
+      </li>    
+      <% else %>
+        <% end %>
+
+  
+
+      <%# //商品がある場合は表示されないようにしましょう   修正した箇所をわかりやすくするため残しています %>
+      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう 修正した箇所をわかりやすくするため残しています%>
+
     </ul>
   </div>
   <%# /商品一覧 %>
