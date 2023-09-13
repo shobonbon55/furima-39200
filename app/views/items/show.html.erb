@@ -6,16 +6,19 @@
     <h2 class="name">
       <%= "#{@item.item_name}" %>
     </h2>
+
+
     <div class="item-img-content">
       <%= image_tag @item.image, class: "item-img" if @item.image.attached? %><br>
  
-      <% if @item == nil %> 
-            <div class="sold-out">
-        <span>Sold Out!!</span>
+       <% if @item.order.present? %>
+      <div class='sold-out'>
+        <span >Sold Out!!</span>
       </div>
-      <% end %>
-         
+      <% end %> 
     </div>
+    
+
     <div class="item-price-box">
       <span class="item-price">
          <%= "￥#{@item.price}" %>
@@ -33,12 +36,15 @@
     <p class="or-text">or</p>
     <%= link_to "削除", item_path(@item), method: :delete, class:"item-destroy" %>
     
- <% else %>
- <% if @item.present? %>
+      <% else %>
 
-    <%= link_to "購入画面に進む", item_orders_path(@item) ,class:"item-red-btn"%>
+     <% if @item.order.present? %>
 
-    <% end %>
+      <% else %>
+
+       <%= link_to "購入画面に進む", item_orders_path(@item) ,class:"item-red-btn"%>
+
+       <% end %>
      <% end %>
   <% end %>
 
@@ -85,6 +91,7 @@
         <span>不適切な商品の通報</span>
       </div>
     </div>
+  </div>
   </div>
   <%# /商品の概要 %>
 
