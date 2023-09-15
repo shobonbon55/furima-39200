@@ -31,6 +31,8 @@
 
     <% if user_signed_in? && @item.user_id.present? %>
     <% if current_user.id == @item.user_id %>
+   <% unless @item.order.present?  %>
+
 
     <%= link_to "商品の編集", edit_item_path(@item), method: :get, class: "item-red-btn" %>
     <p class="or-text">or</p>
@@ -47,7 +49,7 @@
        <% end %>
      <% end %>
   <% end %>
-
+  <% end %>
 
   
     <div class="item-explain-box">
