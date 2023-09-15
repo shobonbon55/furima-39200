@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  factory :order do
+    token {"tok_abcdefghijk00000000000000000"}
+  end
 end
+
