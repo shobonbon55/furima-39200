@@ -7,9 +7,6 @@ class OrdersController < ApplicationController
     @order_address = OrderAddress.new
   end
 
-  def new
-  end
-
   def create
      @order_address = OrderAddress.new(order_params)
 
@@ -45,10 +42,10 @@ class OrdersController < ApplicationController
 
   def move_to_index
    
-    unless  @item.order.present? || user_signed_in?
+    unless  user_signed_in?
       redirect_to new_user_session_path and return
     end
-      if current_user == @item.user  
+      if @item.order.present? || current_user == @item.user  
          redirect_to root_path  and return
       end
      end 
