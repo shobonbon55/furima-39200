@@ -3,7 +3,7 @@ class OrderAddress
   attr_accessor :post_num, :preference_id, :city, :house_num, :house_name, :phone_num, :item_id, :user_id, :token
 
   with_options presence: true do
-    validates :post_num, format: { with: /\A\d{3}[-]?\d{4}\z/, message: "is invalid" }
+    validates :post_num, format: { with:/\A\d{3}[-]\d{4}\z/ , message: "is invalid" }
     validates :preference_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :city
     validates :house_num
@@ -24,4 +24,3 @@ end
 
 
 end
-
