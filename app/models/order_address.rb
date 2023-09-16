@@ -8,11 +8,12 @@ class OrderAddress
     validates :city
     validates :house_num
     validates :phone_num, format: { with: /\A[0-9]{10,11}\z/, message: "is invalid" }
-  end
 
-  validates :item_id, presence: true
-  validates :user_id, presence: true
-  validates :token, presence: true
+    validates :item_id, presence: true
+    validates :user_id, presence: true
+    validates :token, presence: true
+
+end
 
   def save
     # 購入アイテムの情報を保存

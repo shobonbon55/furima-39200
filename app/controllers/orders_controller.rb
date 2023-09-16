@@ -1,8 +1,7 @@
 class OrdersController < ApplicationController
   before_action :find, only: [:index, :create]
-  before_action :find, only: [:index, :create]
   before_action :item_id_params, only: [:create]
- 
+  before_action :move_to_index, only: [:index, :create]
   
   def index
     @order_address = OrderAddress.new
@@ -13,8 +12,8 @@ class OrdersController < ApplicationController
 
   def create
      @order_address = OrderAddress.new(order_params)
-   
-    if @order_address.valid?
+
+     if @order_address.valid?
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
         amount: @item.price,        # 商品の値段

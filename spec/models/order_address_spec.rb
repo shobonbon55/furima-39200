@@ -9,11 +9,17 @@ RSpec.describe OrderAddress, type: :model do
       # order = FactoryBot.create(:order)
         @order_address = FactoryBot.build(:order_address, user_id: user.id, item_id: item.id)
     end
+
     context '内容に問題ない場合' do
       it 'すべての値が正しく入力されていれば保存できること' do
+        expect(@order_address).to be_valid
+      end
+      it '建物名が空でも登録できる' do
         @order_address.house_name = nil # house_nameを空にする
         expect(@order_address).to be_valid
       end
+
+    
     end
 
 
